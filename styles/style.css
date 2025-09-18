@@ -92,7 +92,6 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   gap: 26px;
-  height: 529px;
   padding: 0 0 2px 2px;
 }
 
@@ -102,14 +101,14 @@ a {
   height: 298px;
   overflow: auto;
   gap: 30px;
-  position: relative; /* для оверлеев */
+  position: relative;
 }
 
 .content__list {
   display: grid;
   gap: 30px;
   width: 100%;
-  margin: 2px 3px 0 2px; /* top right bottom left */
+  margin: 2px 3px 0 2px;
 }
 
 /* =========================
@@ -119,7 +118,6 @@ a {
   padding-top: 77px;
 }
 
-.result img,
 .result video,
 .content__details img {
   display: block;
@@ -129,15 +127,13 @@ a {
   width: 711px;
   height: 386px;
   margin-bottom: 16px;
-  overflow: hidden;
-  position: relative; /* для оверлеев */
+  position: relative;
 }
 
 .result__video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 /* =========================
@@ -149,16 +145,12 @@ a {
   font-weight: 700;
   line-height: 94%;
   text-transform: uppercase;
-  overflow: hidden;
   display: block;
-  height: 210px;
-  margin-top: -4px;
 }
 
 .content__accent {
   color: #545050;
 }
-
 .content__video-card-title {
   font-family: Oswald, sans-serif;
   font-size: 30px;
@@ -169,7 +161,6 @@ a {
   margin-bottom: 6px;
   -webkit-line-clamp: 1;
 }
-
 .content__video-card-description {
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
@@ -178,8 +169,6 @@ a {
   line-height: 16.2px;
   -webkit-line-clamp: 4;
 }
-
-/* Ограничение текста в карточках */
 .content__video-card-title,
 .content__video-card-description {
   display: -webkit-box;
@@ -188,7 +177,6 @@ a {
   word-break: break-word;
   overflow: hidden;
 }
-
 /* =========================
    Cards
    ========================= */
@@ -207,10 +195,9 @@ a {
 .content__video-card-description-container {
   flex: 1;
 }
-
-.content__video-card-description-container:hover {
+.content__card-link:hover .content__video-card-title,
+.content__card-link:hover .content__video-card-description {
   text-decoration: underline;
-  color: #fff;
 }
 
 /* =========================
@@ -231,7 +218,7 @@ form.search-form {
   margin-bottom: 5px;
 }
 
-.search-form__fieldset h2 {
+.search-form__fieldset-title {
   color: #fff;
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
@@ -252,17 +239,14 @@ form.search-form {
   cursor: pointer;
 }
 
-/* подчёркивание по всей активной зоне */
 .search-form__label:hover .search-form__label-text,
-.search-form__submit-button:hover,
-.more-button:hover {
+.button:hover {
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
 
 .search-form__textfield {
   width: 225px;
-  height: 27px;
   border: none;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
@@ -284,8 +268,6 @@ form.search-form {
   border-right-color: #fff;
   border-left-color: #fff;
 }
-
-/* Чекбокс-псевдо */
 .search-form__checkbox {
   outline: none;
 }
@@ -311,7 +293,7 @@ form.search-form {
 }
 
 /* =========================
-   Buttons
+   Buttons 
    ========================= */
 .button {
   width: 100%;
@@ -323,66 +305,29 @@ form.search-form {
   line-height: normal;
   background-color: transparent;
   border: 1px solid #fff;
+  cursor: pointer;
+  font-family: "Fira Sans Condensed", sans-serif;
 }
-
-.more-button {
-  margin: 0 3px 3px 2px; /* top 0, right 3, bottom 3, left 2 */
-}
-
-/* =========================
-   Links / States
-   ========================= */
-.content__card-link {
-  display: block;
-}
-
-.content__card-link_current,
-.content__card-link:active {
+.button:active {
   background: #545050;
 }
-
-.search-form__submit-button:active,
-.more-button:active {
-  background: #545050;
-}
-
-/* Унифицированные focus-visible контуры */
-.search-form__label:has(:focus-visible),
-.content__list-item:focus-visible,
-.search-form__textfield:focus-visible,
-.search-form__checkbox:not(:active):focus-visible,
-.search-form__submit-button:focus-visible,
-.more-button:focus-visible {
+.button:focus-visible {
   outline: 1px solid #fff;
   outline-offset: 2px;
 }
 
-/* =========================
-   Overlays: preloaders & errors
-   ========================= */
-.preloader,
-.error-stub {
-  position: absolute;
-  inset: 0;
-  display: none; /* включаются классами состояния */
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
+.more-button {
+  margin: 0 3px 3px 2px;
 }
-
-.preloader {
-  background: rgba(27, 25, 25, 0.6);
+.content__card-link {
+  display: block;
 }
-
-.error-stub {
-  background: rgba(84, 80, 80, 0.85);
-  z-index: 11;
+.content__card-link_current,
+.content__card-link:active {
+  background: #545050;
 }
-
-/* Состояния контейнеров */
-.is-loading > .preloader {
-  display: flex;
-}
-.has-error > .error-stub {
-  display: flex;
+.search-form__label:has(:focus-visible),
+.search-form__textfield:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
 }
